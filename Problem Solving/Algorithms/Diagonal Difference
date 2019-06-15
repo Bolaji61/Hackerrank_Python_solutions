@@ -1,0 +1,38 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the diagonalDifference function below.
+def diagonalDifference(arr):
+    first_diag = 0
+    second_diag = 0
+    n = len(arr)
+    for i in range(n):
+        first_diag+=arr[i][i]
+        second_diag +=arr[i][n-i-1]
+        # return second_diag
+    result = first_diag - second_diag
+    return abs(result)
+    
+
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    arr = []
+
+    for _ in range(n):
+        arr.append(list(map(int, input().rstrip().split())))
+
+    result = diagonalDifference(arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
